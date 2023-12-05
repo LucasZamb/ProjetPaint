@@ -5,6 +5,7 @@ public class Square extends Rectangle {
         super(px, py, c);
     }
 
+    //New way to set the bounding box
     @Override
     public void setBoundingBox(int heightBB, int widthBB) {
         super.setBoundingBox(heightBB, heightBB);

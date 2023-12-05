@@ -1,4 +1,3 @@
-import java.awt.Point;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -27,7 +26,7 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
 
     }
 
-
+    //Setter
     public void setColor(Color color) {
         this.currentColor = color;
     }
@@ -51,6 +50,7 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
     public void mouseMoved(MouseEvent e){
     }
 
+    //Coordinate input based on mouse movement
     public void mouseDragged(MouseEvent e){
         figures.get(figures.size()-1).setBoundingBox(e.getX()-x,e.getY()-y);
         paintComponent(this.getGraphics());
@@ -64,6 +64,8 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
     public void mouseExited(MouseEvent e){
     }
 
+
+    //Adding figures to the list when clicking
     public void mousePressed(MouseEvent e){
         this.x=e.getX();
         this.y=e.getY();
@@ -80,13 +82,12 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
         }
     }
 
-
+    //Method to paint the figure
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for(Figure figure : figures){
             figure.draw(g);
-            this.repaint();
         }
     }
 
@@ -120,7 +121,7 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
         }
     }
 
-
+    //Method to save figures
     public void loadFigures() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Ouvrir les figures");

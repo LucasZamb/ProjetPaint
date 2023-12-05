@@ -161,13 +161,21 @@ public class Window extends JFrame implements ActionListener {
     }
 
     private void openFiles() {
-        drawing.loadFigures();
+        int result = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder ?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(result == JOptionPane.YES_OPTION){
+
+            drawing.saveFigures();
+            drawing.loadFigures();
+        }
+        else if (result == JOptionPane.NO_OPTION){
+            drawing.loadFigures();
+        }
+
     }
 
     private void showNewConfirmation() {
         int result = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder ?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
-            //a Coder sauvegarde + nouveau
             drawing.saveFigures();
             drawing.clearDrawing();
         }
