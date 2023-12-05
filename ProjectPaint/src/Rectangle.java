@@ -15,8 +15,8 @@ public class Rectangle extends Figure{
     }
 
     public void setBoundingBox(int heightBB, int widthBB) {
-        this.width = heightBB;
-        this.length = widthBB;
+        this.width =widthBB ;
+        this.length = heightBB;
     }
 
     //Method for drawing the figure

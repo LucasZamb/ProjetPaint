@@ -10,65 +10,30 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.FileInputStream;
 
-public class Drawing extends JPanel {//implements MouseListener, MouseMotionListener
+public class Drawing extends JPanel implements MouseListener, MouseMotionListener {
     private ArrayList<Figure> figures;
     private Color currentColor;
-    private Figure currentFigure;
-    private Point startPoint;
-    private Rectangle rectangle;
-    private Circle circle;
+    private String currentFigure;
+    private int x;
+    private int y;
+
 
     public Drawing() {
         figures = new ArrayList<>();
         currentColor = Color.BLACK;
-        currentFigure = rectangle;
-        //addMouseListener(this);
-        //addMouseMotionListener(this);
+        currentFigure = "Rectangle";
+        addMouseListener(this);
+        addMouseMotionListener(this);
 
     }
 
 
-    public void mouseClicked(MouseEvent e) {
-        // pour le clique gauche
-    }
-
-    private void MousePressed(MouseEvent e){
-        startPoint = e.getPoint();
-        if (currentFigure.equals("Rectangle")) {
-            currentFigure = new Rectangle(0, 0, currentColor);
-        } else if (currentFigure.equals("Ellipse")) {
-            currentFigure = new Ellipse(0, 0, currentColor);
-        } else if (currentFigure.equals("Circle")) {
-            currentFigure = new Circle(0, 0, currentColor);
-        } else if (currentFigure.equals("Square")) {
-            currentFigure = new Square(0, 0, currentColor);
-        }
-        if(currentFigure != null){
-            setColor(currentColor);
-        }
-    }
-
-    private void MouseReleased(MouseEvent e){
-        if (currentFigure != null){
-            addFigure(currentFigure);
-            currentFigure = null ;
-        }
-    }
-    public void mouseDragged(MouseEvent e) {
-        if (currentFigure != null) {
-            int witdh = e.getX() - startPoint.x;
-            int height = e.getY() -startPoint.y;
-            //currentFigure.setWidth(witdh);
-            //currentFigure.setHeight(height);
-            repaint();
-        }
-    }
     public void setColor(Color color) {
         this.currentColor = color;
     }
 
-    public void setNameFigure(Figure figure) {
-        this.currentFigure = figure;
+    public void setNameFigure(String currentFigure) {
+        this.currentFigure = currentFigure;
     }
 
     public void addFigure(Figure figure){
@@ -79,13 +44,57 @@ public class Drawing extends JPanel {//implements MouseListener, MouseMotionList
         return figures;
     }
 
+
+    public void mouseClicked(MouseEvent e){
+    }
+
+    public void mouseMoved(MouseEvent e){
+    }
+
+    public void mouseDragged(MouseEvent e){
+        figures.get(figures.size()-1).setBoundingBox(e.getX()-x,e.getY()-y);
+        paintComponent(this.getGraphics());
+
+    }
+
+
+    public void mouseEntered(MouseEvent e){
+    }
+
+    public void mouseExited(MouseEvent e){
+    }
+
+    public void mousePressed(MouseEvent e){
+        this.x=e.getX();
+        this.y=e.getY();
+
+        switch (currentFigure){
+            case "Square" : figures.add(new Square(x,y,currentColor));
+                break;
+            case "Rectangle" : figures.add(new Rectangle(x,y,currentColor));
+                break;
+            case "Circle" : figures.add(new Circle(x,y,currentColor));
+                break;
+            case "Ellipse" : figures.add(new Ellipse(x,y,currentColor));
+                break;
+        }
+    }
+
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         for(Figure figure : figures){
             figure.draw(g);
+            this.repaint();
         }
     }
+
+    public void mouseReleased(MouseEvent e){
+        figures.get(figures.size()-1).setBoundingBox(e.getX()-x,e.getY()-y);
+        paintComponent(this.getGraphics());
+    }
+
 
     //Method to save a figure
     public void saveFigures() {

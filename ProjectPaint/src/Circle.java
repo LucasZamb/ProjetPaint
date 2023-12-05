@@ -7,8 +7,9 @@ public class Circle extends Ellipse {
     }
 
 
-    public void setBoundingBox(int diameter) {
-        super.setBoundingBox(diameter, diameter);
+    @Override
+    public void setBoundingBox(int heightBB, int widthBB) {
+        super.setBoundingBox(heightBB, heightBB);
     }
 
     @Override

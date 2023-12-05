@@ -224,20 +224,20 @@ public class Window extends JFrame implements ActionListener {
         }
         else if (event.getSource() == btnEllipse){
             var ellipse  = new Ellipse(0 , 0 , Color.black );
-            drawing.setNameFigure(ellipse);
+            drawing.setNameFigure("Ellipse");
 
         }
         else if (event.getSource() == btnCercle){
             var circle  = new Circle(0 , 0 , Color.black );
-            drawing.setNameFigure(circle);
+            drawing.setNameFigure("Circle");
         }
         else if (event.getSource() == btnRectangle){
             var rectangle  = new Rectangle(0 , 0 , Color.black );
-            drawing.setNameFigure(rectangle);
+            drawing.setNameFigure("Rectangle");
         }
         else if (event.getSource() == btnCarre){
             var carre  = new Square(0 , 0 , Color.black );
-            drawing.setNameFigure(carre);
+            drawing.setNameFigure("Square");
         }
     }
 }
