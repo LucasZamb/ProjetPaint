@@ -163,8 +163,9 @@ public class Window extends JFrame implements ActionListener {
     private void openFiles() {
         int result = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder ?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
-
+            //using saving method from drawing
             drawing.saveFigures();
+            //using loading method from drawing
             drawing.loadFigures();
         }
         else if (result == JOptionPane.NO_OPTION){
@@ -173,10 +174,13 @@ public class Window extends JFrame implements ActionListener {
 
     }
 
+
     private void showNewConfirmation() {
         int result = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder ?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
+            //using saving method from drawing
             drawing.saveFigures();
+            //using drawing method from drawing
             drawing.clearDrawing();
         }
         else if (result == JOptionPane.NO_OPTION){
@@ -187,7 +191,7 @@ public class Window extends JFrame implements ActionListener {
     private void showQuitConfirmation() {
         int result = JOptionPane.showConfirmDialog(this, "Voulez-vous sauvegarder ?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(result == JOptionPane.YES_OPTION){
-            //coder save
+            // save
             drawing.saveFigures();
             JOptionPane.showMessageDialog(this, "Sauvegarde effectué");
             System.exit(0);
@@ -231,20 +235,15 @@ public class Window extends JFrame implements ActionListener {
             drawing.setColor(Color.ORANGE);
         }
         else if (event.getSource() == btnEllipse){
-            var ellipse  = new Ellipse(0 , 0 , Color.black );
             drawing.setNameFigure("Ellipse");
-
         }
         else if (event.getSource() == btnCercle){
-            var circle  = new Circle(0 , 0 , Color.black );
             drawing.setNameFigure("Circle");
         }
         else if (event.getSource() == btnRectangle){
-            var rectangle  = new Rectangle(0 , 0 , Color.black );
             drawing.setNameFigure("Rectangle");
         }
         else if (event.getSource() == btnCarre){
-            var carre  = new Square(0 , 0 , Color.black );
             drawing.setNameFigure("Square");
         }
     }
