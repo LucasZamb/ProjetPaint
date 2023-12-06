@@ -54,6 +54,7 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
     public void mouseDragged(MouseEvent e){
         int newWidth = Math.abs(e.getX() - x);
         int newHeight = Math.abs(e.getY() - y);
+        //Manque changement d'origine
         figures.get(figures.size() - 1).setBoundingBox(newWidth, newHeight);
         repaint();
     }
