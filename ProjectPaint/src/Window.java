@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class Window extends JFrame implements ActionListener {
     private Drawing drawing;
@@ -122,6 +123,7 @@ public class Window extends JFrame implements ActionListener {
         });
 
         JMenuItem menuSave = new JMenuItem("Save");
+        menuSave.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
         menuFile.add(menuSave);
         menuSave.addActionListener(new ActionListener() {
             @Override
