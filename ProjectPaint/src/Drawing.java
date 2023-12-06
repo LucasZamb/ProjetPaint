@@ -103,6 +103,7 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
         //creating a file selector
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Sauvegarder les figures");
+
         //User choice
         int userSelection = fileChooser.showSaveDialog(null);
 
