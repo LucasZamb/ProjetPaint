@@ -41,7 +41,6 @@ public abstract class Figure implements Serializable {
         return color;
     }
 
-
     //toString method
     @Override
     public String toString() {

@@ -52,9 +52,10 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
 
     //Coordinate input based on mouse movement
     public void mouseDragged(MouseEvent e){
-        figures.get(figures.size()-1).setBoundingBox(e.getX()-x,e.getY()-y);
-        paintComponent(this.getGraphics());
-
+        int newWidth = Math.abs(e.getX() - x);
+        int newHeight = Math.abs(e.getY() - y);
+        figures.get(figures.size() - 1).setBoundingBox(newWidth, newHeight);
+        repaint();
     }
 
 
@@ -92,7 +93,9 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
     }
 
     public void mouseReleased(MouseEvent e){
-        figures.get(figures.size()-1).setBoundingBox(e.getX()-x,e.getY()-y);
+        int newWidth= Math.abs(e.getX() - x);
+        int newHeight = Math.abs(e.getY() - y);
+        figures.get(figures.size()-1).setBoundingBox(newWidth,newHeight);
         paintComponent(this.getGraphics());
     }
 
@@ -103,7 +106,6 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
         //creating a file selector
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Sauvegarder les figures");
-
         //User choice
         int userSelection = fileChooser.showSaveDialog(null);
 
@@ -149,3 +151,6 @@ public class Drawing extends JPanel implements MouseListener, MouseMotionListene
     }
 
 }
+
+
+
